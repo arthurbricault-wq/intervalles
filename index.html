@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Intervalles</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#EEF1F3">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Intervalles">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="setup">
+
+  <!-- Réglages -->
+  <main id="setup" class="screen">
+    <h1>Intervalles</h1>
+
+    <div class="rows">
+      <div class="card card-run">
+        <span class="lbl">Course</span>
+        <div class="time">
+          <input id="run-min" type="number" inputmode="numeric" min="0" max="999" value="2" aria-label="Minutes de course">
+          <span class="unit">min</span>
+          <input id="run-sec" type="number" inputmode="numeric" min="0" max="59" value="0" aria-label="Secondes de course">
+          <span class="unit">s</span>
+        </div>
+      </div>
+
+      <div class="card card-rest">
+        <span class="lbl">Pause</span>
+        <div class="time">
+          <input id="rest-min" type="number" inputmode="numeric" min="0" max="999" value="1" aria-label="Minutes de pause">
+          <span class="unit">min</span>
+          <input id="rest-sec" type="number" inputmode="numeric" min="0" max="59" value="0" aria-label="Secondes de pause">
+          <span class="unit">s</span>
+        </div>
+      </div>
+
+      <div class="card card-reps">
+        <span class="lbl">Répétitions</span>
+        <div class="time">
+          <input id="reps" type="number" inputmode="numeric" min="1" max="99" value="8" aria-label="Nombre de répétitions">
+        </div>
+      </div>
+    </div>
+
+    <label class="check">
+      <input type="checkbox" id="warn">
+      <span>Bips de 5 à 0 seconde avant chaque changement</span>
+    </label>
+
+    <p id="summary" class="summary"></p>
+
+    <button id="start" class="main-btn">Démarrer</button>
+  </main>
+
+  <!-- Séance en cours -->
+  <main id="run" class="screen" hidden>
+    <p id="phase" class="phase">Course</p>
+    <p id="count" class="count" aria-live="off">2:00</p>
+    <p id="cycle" class="cycle">Cycle 1 sur 8</p>
+
+    <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+    <p id="remain" class="remain">Reste 23:00</p>
+
+    <div class="actions">
+      <button id="toggle" class="main-btn">Suspendre</button>
+      <button id="stop" class="ghost-btn">Arrêter</button>
+    </div>
+  </main>
+
+  <!-- Fin -->
+  <main id="done" class="screen" hidden>
+    <p class="phase">Séance terminée</p>
+    <p id="doneInfo" class="cycle"></p>
+    <button id="again" class="main-btn">Nouvelle séance</button>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
